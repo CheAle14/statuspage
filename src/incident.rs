@@ -13,7 +13,7 @@ pub enum IncidentStatus {
     Postmortem,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "lowercase")]
 pub enum IncidentImpact {
     None,

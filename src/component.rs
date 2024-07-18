@@ -24,8 +24,8 @@ pub struct Component {
     pub start_date: Option<NaiveDate>,
     pub group_id: Option<String>,
     pub page_id: String,
-    pub group: bool,
-    pub only_show_if_degraded: bool,
+    pub group: Option<bool>,
+    pub only_show_if_degraded: Option<bool>,
     #[serde(default)]
     pub components: Vec<String>,
 }
