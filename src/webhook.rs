@@ -44,7 +44,7 @@ pub enum WebhookPayload {
     Incident {
         incident: Incident,
     },
-    Unknown,
+    Unknown(serde::de::IgnoredAny),
 }
 
 #[derive(Debug, Deserialize)]

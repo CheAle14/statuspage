@@ -39,7 +39,7 @@ pub struct IncidentUpdate {
     pub created_at: DateTime<FixedOffset>,
     pub updated_at: DateTime<FixedOffset>,
     pub display_at: DateTime<FixedOffset>,
-    pub deliver_notifications: bool,
+    pub deliver_notifications: Option<bool>,
     #[serde(default, deserialize_with = "crate::utils::deserialize_null_default")]
     pub affected_components: Vec<AffectedComponent>,
 }
@@ -55,8 +55,8 @@ pub struct Incident {
     pub resolved_at: Option<DateTime<FixedOffset>>,
     pub impact: IncidentImpact,
     pub shortlink: String,
-    pub started_at: DateTime<FixedOffset>,
-    pub page_id: String,
+    pub started_at: Option<DateTime<FixedOffset>>,
+    pub page_id: Option<String>,
     #[serde(default)]
     pub incident_updates: Vec<IncidentUpdate>,
     #[serde(default)]
