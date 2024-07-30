@@ -8,3 +8,4 @@ pub mod metainfo;
 pub mod status;
 pub mod summary;
 mod utils;
+pub mod webhook;
