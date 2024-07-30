@@ -4,6 +4,7 @@ use serde::Deserialize;
 #[serde(rename_all = "lowercase")]
 pub enum StatusIndicator {
     None,
+    Maintenance,
     Minor,
     Major,
     Critical,
