@@ -1,7 +1,7 @@
 use chrono::{DateTime, FixedOffset, NaiveDate};
 use serde::Deserialize;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum ComponentStatus {
     Operational,

@@ -3,7 +3,7 @@ use serde::Deserialize;
 
 use crate::component::{Component, ComponentStatus};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "lowercase")]
 pub enum IncidentStatus {
     Investigating,

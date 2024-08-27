@@ -1,0 +1,34 @@
+{
+  "component": {
+    "created_at": "2015-07-31T01:55:43.739Z",
+    "description": "The API is responsible for sending and receiving messages, and general operations on the platform. If this is down, chances are you'll have trouble connecting and/or sending messages.",
+    "group_id": null,
+    "id": "rhznvxg4v7yh",
+    "name": "API",
+    "page_id": "srhpyqt94yxb",
+    "position": 1,
+    "showcase": true,
+    "start_date": null,
+    "status": "degraded_performance",
+    "updated_at": "2024-08-16T22:18:38.774Z"
+  },
+  "component_update": {
+    "component_id": "rhznvxg4v7yh",
+    "component_type": "Component",
+    "created_at": "2024-08-16T22:18:38.779Z",
+    "id": "9qmhxszclgsq",
+    "new_status": "degraded_performance",
+    "old_status": "operational",
+    "state": "sn_created"
+  },
+  "meta": {
+    "documentation": "https://help.statuspage.io/knowledge_base/topics/webhook-notifications",
+    "generated_at": "2024-08-16T22:18:45.270Z",
+    "unsubscribe": "http://discordstatus.com/?unsubscribe=***"
+  },
+  "page": {
+    "id": "srhpyqt94yxb",
+    "status_description": "Partially Degraded Service",
+    "status_indicator": "minor"
+  }
+}
