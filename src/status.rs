@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-#[derive(Clone, Copy, Debug, Deserialize)]
+#[derive(Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Copy, Debug, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum StatusIndicator {
     None,
