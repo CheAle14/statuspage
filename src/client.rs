@@ -1,4 +1,4 @@
-use reqwest::blocking::{Client, ClientBuilder, RequestBuilder};
+use reqwest::{Client, ClientBuilder, RequestBuilder};
 use serde::{de::DeserializeOwned, Deserialize};
 
 use crate::{
@@ -30,19 +30,21 @@ impl StatusClient {
     }
 
     #[inline(always)]
-    fn get_json<T: DeserializeOwned>(&self, endpoint: &str) -> crate::Result<T> {
+    async fn get_json<T: DeserializeOwned>(&self, endpoint: &str) -> crate::Result<T> {
         self.get(endpoint)
-            .send()?
+            .send()
+            .await?
             .error_for_status()?
             .json()
+            .await
             .map_err(|e| crate::error::Error::Reqwest(e))
     }
 
-    pub fn get_summary(&self) -> crate::Result<Summary> {
-        self.get_json("/summary.json")
+    pub async fn get_summary(&self) -> crate::Result<Summary> {
+        self.get_json("/summary.json").await
     }
 
-    pub fn get_status(&self) -> crate::Result<Status> {
+    pub async fn get_status(&self) -> crate::Result<Status> {
         #[derive(Deserialize)]
         struct APIResponse {
             #[allow(unused)]
@@ -50,11 +52,11 @@ impl StatusClient {
             status: Status,
         }
 
-        let response: APIResponse = self.get_json("/status.json")?;
+        let response: APIResponse = self.get_json("/status.json").await?;
         Ok(response.status)
     }
 
-    pub fn get_components(&self) -> crate::Result<Vec<Component>> {
+    pub async fn get_components(&self) -> crate::Result<Vec<Component>> {
         #[derive(Deserialize)]
         struct APIResponse {
             #[allow(unused)]
@@ -62,11 +64,11 @@ impl StatusClient {
             components: Vec<Component>,
         }
 
-        let response: APIResponse = self.get_json("/components.json")?;
+        let response: APIResponse = self.get_json("/components.json").await?;
         Ok(response.components)
     }
 
-    pub fn get_incidents(&self) -> crate::Result<Vec<Incident>> {
+    pub async fn get_incidents(&self) -> crate::Result<Vec<Incident>> {
         #[derive(Deserialize)]
         struct APIResponse {
             #[allow(unused)]
@@ -74,11 +76,11 @@ impl StatusClient {
             incidents: Vec<Incident>,
         }
 
-        let response: APIResponse = self.get_json("/incidents.json")?;
+        let response: APIResponse = self.get_json("/incidents.json").await?;
         Ok(response.incidents)
     }
 
-    pub fn get_incident(&self, id: &str) -> crate::Result<Incident> {
+    pub async fn get_incident(&self, id: &str) -> crate::Result<Incident> {
         #[derive(Deserialize)]
         struct APIResponse {
             #[allow(unused)]
@@ -86,7 +88,7 @@ impl StatusClient {
             incident: Incident,
         }
 
-        let response: APIResponse = self.get_json(&format!("/incidents/{id}.json"))?;
+        let response: APIResponse = self.get_json(&format!("/incidents/{id}.json")).await?;
         Ok(response.incident)
     }
 }

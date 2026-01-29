@@ -1,11 +1,11 @@
 [package]
 name = "statuspage"
-version = "0.3.4"
+version = "0.4.0"
 edition = "2021"
 
 [dependencies]
 chrono = { version = "0.4.38", features = ["serde"] }
-reqwest = { version = "0.12.5", features = ["blocking", "json"] }
+reqwest = { version = "0.12.5", features = ["json"] }
 serde = { version = "1.0.204", features = ["derive"] }
 thiserror = "2.0.12"
 
